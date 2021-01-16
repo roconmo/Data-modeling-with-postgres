@@ -12,7 +12,7 @@ function process_log_file : given a cursor and a filepath, the functions inserts
 $ python create_tables.py 
 ```
 To create Sparkify database, fact and dimesion tables
-´´´
+```
 $ python etl.py
 ```
 to populate the tables
