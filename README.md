@@ -15,4 +15,4 @@ To create Sparkify database, fact and dimesion tables
 ```
 $ python etl.py
 ```
-to populate the tables
+To populate the tables
