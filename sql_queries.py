@@ -15,8 +15,8 @@ songplay_table_create = ("""CREATE TABLE IF NOT EXISTS songplays (songplay_id SE
                                                             start_time TIMESTAMP NOT NULL, 
                                                             user_id int NOT NULL, 
                                                             level varchar NOT NULL, 
-                                                            song_id varchar NOT NULL, 
-                                                            artist_id varchar NOT NULL, 
+                                                            song_id varchar NULL, 
+                                                            artist_id varchar NULL, 
                                                             session_id int NOT NULL, 
                                                             location varchar NOT NULL, 
                                                             user_agent varchar NOT NULL);""")
@@ -45,7 +45,8 @@ artist_table_create = ("""CREATE TABLE IF NOT EXISTS artists (artist_id varchar 
                                                            latitude numeric NULL, 
                                                            longitude numeric NULL);""")
 #Create time table
-time_table_create = ("""CREATE TABLE IF NOT EXISTS time (start_time date NOT NULL, 
+time_table_create = ("""CREATE TABLE IF NOT EXISTS time (time_id int NOT NULL PRIMARY KEY,
+                                                            start_time timestamp NOT NULL, 
                                                             hour int NOT NULL, 
                                                             day int NOT NULL,  
                                                             week int NOT NULL, 
@@ -104,6 +105,7 @@ artist_table_insert = ("""INSERT INTO artists (
 """)
 
 time_table_insert = ("""INSERT INTO time (
+                        time_id,
                         start_time, 
                         hour, 
                         day, 
@@ -111,7 +113,7 @@ time_table_insert = ("""INSERT INTO time (
                         month, 
                         year, 
                         weekday)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s) 
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s) 
                     """)
 
 # FIND SONGS
